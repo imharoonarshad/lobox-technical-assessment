@@ -1,0 +1,118 @@
+.multi-dropdown {
+  position: relative;
+  width: 100%;
+  min-width: 350px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+    &--blue-outline {
+      border: 2px solid #4299e1;
+      box-shadow: 0 0 0 1px rgba(66, 153, 225, 0.2);
+    }
+  }
+
+  &__selected {
+    font-size: 18px;
+    color: #4a5568;
+    font-weight: 500;
+  }
+
+  &__arrow {
+    color: #a0aec0;
+  }
+
+  &__content {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    overflow-y: auto;
+    max-height: 300px;
+    padding: 8px 0;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #cbd5e0;
+      border-radius: 10px;
+    }
+  }
+
+  &__options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+
+    &:hover {
+      background-color: #f7fafc;
+    }
+
+    &--selected {
+      background-color: #ebf8ff;
+
+      .multi-dropdown__option-label {
+        color: #3182ce;
+      }
+
+      &:hover {
+        background-color: #e6f6ff;
+      }
+    }
+  }
+
+  &__option-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__option-icon {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #4a5568;
+  }
+
+  &__option-label {
+    font-size: 16px;
+    color: #2d3748;
+    font-weight: 400;
+  }
+
+  &__check {
+    color: #4299e1;
+    font-size: 16px;
+  }
+}
