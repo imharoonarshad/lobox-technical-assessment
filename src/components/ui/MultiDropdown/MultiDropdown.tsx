@@ -1,44 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  FaChevronUp,
-  FaChevronDown,
-  FaCheck,
-  FaGraduationCap,
-  FaFlask,
-  FaPalette,
-  FaFootballBall,
-  FaGamepad,
-  FaHeartbeat,
-  FaDumbbell,
-  FaMicrochip,
-  FaChartLine,
-  FaPlaneDeparture,
-} from "react-icons/fa";
-
+import { FaChevronUp, FaChevronDown, FaCheck } from "react-icons/fa";
 import {
   DropdownOption,
   MultiDropdownProps,
 } from "../../../types/MultiDropdown";
 import "./MultiDropdown.scss";
 
-const IconMap: Record<string, React.ElementType> = {
-  FaGraduationCap,
-  FaFlask,
-  FaPalette,
-  FaFootballBall,
-  FaGamepad,
-  FaHeartbeat,
-  FaDumbbell,
-  FaMicrochip,
-  FaChartLine,
-  FaPlaneDeparture,
-};
-
 const MultiDropdown: React.FC<MultiDropdownProps> = ({
   options,
   selectedOptions,
   onChange,
-  placeholder = "Select activity",
+  placeholder,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -65,15 +37,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
 
   const handleOptionClick = (option: DropdownOption) => {
     onChange([option]);
-
     setIsOpen(false);
-  };
-
-  const renderIcon = (iconName?: string) => {
-    if (!iconName) return null;
-
-    const IconComponent = IconMap[iconName];
-    return IconComponent ? <IconComponent /> : null;
   };
 
   return (
@@ -83,7 +47,13 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
         onClick={toggleDropdown}
       >
         <div className="multi-dropdown__selected">
-          {selectedOptions.length > 0 ? selectedOptions[0].label : placeholder}
+          {selectedOptions.length > 0 ? (
+            <>
+              {selectedOptions[0].label}
+            </>
+          ) : (
+            placeholder
+          )}
         </div>
         <div className="multi-dropdown__arrow">
           {isOpen ? <FaChevronUp /> : <FaChevronDown />}
@@ -105,11 +75,11 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
                 >
                   <div className="multi-dropdown__option-content">
                     <span className="multi-dropdown__option-label">
-                      {option.label}
+                      {isSelected ? `Yeeeah, ${option.label}!` : option.label}
                     </span>
                     {option.icon && (
-                      <span className="multi-dropdown__option-icon">
-                        {renderIcon(option.icon)}
+                      <span className="multi-dropdown__emoji">
+                        {option.icon}
                       </span>
                     )}
                   </div>

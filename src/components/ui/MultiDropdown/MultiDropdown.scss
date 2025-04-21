@@ -13,7 +13,7 @@
     padding: 16px 24px;
     background-color: white;
     border: 1px solid #e2e8f0;
-    border-radius: 50px;
+    border-radius: 15px;
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 
@@ -84,6 +84,7 @@
 
       .multi-dropdown__option-label {
         color: #3182ce;
+        font-weight: 600;
       }
 
       &:hover {
